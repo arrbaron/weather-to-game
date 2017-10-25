@@ -11,16 +11,18 @@
 </head>
 <body>
     <header role="banner">
-        <h2>Wondering whether to game?</h2>
-        <h1>Weather to Game</h1>
+        <a class="header__link">
+            <h2>Wondering whether to game?</h2>
+            <h1>Weather to Game</h1>
+        </a>
     </header>
     <main role="main">
         <div class="intro">
             <p>Is today a good day to game?</p>
             <p>Enter your zip code/city to find out...</p>
-            <form>
-                <input type="text" placeholder="Boston" required>
-                <input type="submit">
+            <form class="intro__form">
+                <input type="text" class="intro__query" placeholder="Boston" required>
+                <input type="submit" class="intro__submit">
             </form>
         </div>
         <div class="day-forecast hidden">
@@ -35,7 +37,7 @@
                     <li>Heavy rain</li>
                     <li>56° Fahrenheit</li>
                 </ul>
-            <p>Planning ahead? Get the extended forecast</p>
+            <p>Planning ahead? <a href="#" class="day-forecast__link">Get the extended forecast</a></p>
             </div>
         </div>
         <div class="extended-forecast hidden">
@@ -80,5 +82,7 @@
         </div>
     </main>
     <footer role="contentinfo" class="hidden">°C/°F</footer>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="app.js"></script>
 </body>
 </html>
