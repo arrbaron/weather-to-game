@@ -2,6 +2,8 @@ const WEATHERBIT_CURRENT_URL = "https://api.weatherbit.io/v2.0/current";
 const WEATHERBIT_EXTENDED_URL = "https://api.weatherbit.io/v2.0/forecast/daily";
 
 const App = {
+    units: "I",
+    
     reset: function() {
         EventListeners.startListeners();
         HTMLRenderer.showIntro();
@@ -72,15 +74,29 @@ const HTMLRenderer = {
         $(".day-forecast").removeClass("hidden");
         $(".extended-forecast").addClass("hidden");
 
-        console.log(data);
+        data ? console.log(data) : this.showErr();
+        let result = data.data[0];
+
+        $(".day-forecast__results__result").remove();
+        $(".day-forecast__results").prepend(`
+        <div class="day-forecast__results__result">
+            <p>YES</p>    
+            <p>Today is a good day to game in ${result.city_name}, ${result.country_code}.</p>
+            <p>How about <a href="#">Cosmic Encounter?</a></p>
+            <p><a href="#">Get another recommendation</a></p>
+            <h3>Today's weather for ${result.city_name}, ${result.country_code}</h3>
+            <img src="icons/${result.weather.icon}.png">
+            <ul>
+                <li>${result.weather.description}</li>
+                <li>${result.temp}°F</li>
+            </ul>
+        `);
     },
 
     showExtendedForecast: function() {
         $(".intro").addClass("hidden");
         $(".day-forecast").addClass("hidden");
         $(".extended-forecast").removeClass("hidden");
-
-        alert("showing extended forecast");
     },
 
     showErr: function() {
@@ -89,4 +105,3 @@ const HTMLRenderer = {
 };
 
 $(App.reset());
-// App.reset();
