@@ -5,3 +5,11 @@
 .hidden {
     display: none;
 }
+
+a {
+    cursor: pointer;
+}
+
+header, main {
+    text-align: center;
+}
