@@ -9,3 +9,7 @@
 a {
     cursor: pointer;
 }
+
+header, main {
+    text-align: center;
+}
