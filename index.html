@@ -4,11 +4,81 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <meta name="description" content="Weather to Game is a service that tells you whether the weather will be fit for gaming!">
+    <meta name="description" content="Weather to Game is a service that tells you whether the weather will be fit for gaming">
     <title>Weather to Game</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/normalize/4.1.1/normalize.css" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="main.css">
 </head>
 <body>
-    
+    <header role="banner">
+        <h2>Wondering whether to game?</h2>
+        <h1>Weather to Game</h1>
+    </header>
+    <main role="main">
+        <div class="intro">
+            <p>Is today a good day to game?</p>
+            <p>Enter your zip code/city to find out...</p>
+            <form>
+                <input type="text" placeholder="Boston" required>
+                <input type="submit">
+            </form>
+        </div>
+        <div class="day-forecast hidden">
+            <p>YES</p>
+            <p>Today is a good day to game in Boston, Massachussets.</p>
+            <p>How about <a href="#">Cosmic Encounter?</a></p>
+            <p>Get another recommendation</p>
+            <div class="weather-results">
+                <h3>Today's weather for Boston, Massachussets</h3>
+                <img src="mockups/rain.png">
+                <ul>
+                    <li>Heavy rain</li>
+                    <li>56° Fahrenheit</li>
+                </ul>
+            <p>Planning ahead? Get the extended forecast</p>
+            </div>
+        </div>
+        <div class="extended-forecast hidden">
+            <h3>Extended forecast for Boston, Massachussets</h3>
+            <p>Click day for more info</p>
+            <div class="day">
+                <h4>MON</h4>
+                <p>October 23</p>
+                <p>66°</p>
+                <img src="mockups/sun.png" alt="">
+            </div>
+            <div class="day">
+                <h4>MON</h4>
+                <p>October 23</p>
+                <p>66°</p>
+                <img src="mockups/sun.png" alt="">
+            </div>
+            <div class="day">
+                    <h4>MON</h4>
+                    <p>October 23</p>
+                    <p>66°</p>
+                    <img src="mockups/sun.png" alt="">
+            </div>
+            <div class="day">
+                    <h4>MON</h4>
+                    <p>October 23</p>
+                    <p>66°</p>
+                    <img src="mockups/sun.png" alt="">
+            </div>
+            <div class="day">
+                    <h4>MON</h4>
+                    <p>October 23</p>
+                    <p>66°</p>
+                    <img src="mockups/sun.png" alt="">
+            </div>
+            <div class="day">
+                    <h4>MON</h4>
+                    <p>October 23</p>
+                    <p>66°</p>
+                    <img src="mockups/sun.png" alt="">
+            </div>
+        </div>
+    </main>
+    <footer role="contentinfo" class="hidden">°C/°F</footer>
 </body>
 </html>
