@@ -2,7 +2,7 @@ const WEATHERBIT_CURRENT_URL = "https://api.weatherbit.io/v2.0/current";
 const WEATHERBIT_EXTENDED_URL = "https://api.weatherbit.io/v2.0/forecast/daily";
 
 const App = {
-    units: "I",
+    units: "M",
     
     reset: function() {
         EventListeners.startListeners();
@@ -10,19 +10,46 @@ const App = {
     },
 
     search: function(query) {
-        this.getDataFromAPI(query, HTMLRenderer.showDayForecast);
+        this.getDataFromAPI(query, this.evaluateWeather);
     },
 
-    getDataFromAPI: function(searchTerm, callback) {
-        let location = searchTerm;
+    getDataFromAPI: (searchTerm, callback) => {
         const query = {
             key: "62362ac75c5948fc9871e28bb51d0d19",
-            units: "I"
+            units: App.units
         };
-        isNaN(location) ? query.city = location : query.postal_code = location;
+        isNaN(searchTerm) ? query.city = searchTerm : query.postal_code = searchTerm;
 
         $.getJSON(WEATHERBIT_CURRENT_URL, query, callback).fail(HTMLRenderer.showErr);
         HTMLRenderer.showSection(".day-forecast");
+    },
+
+    evaluateWeather: function(data) {
+        let weatherData = data;
+        let result = data.data[0];
+        let maxTemp = 28;
+        let minTemp = 18;
+        let maxCloud = 25;
+        let weatherEvaluation = " because it's ";
+        let isWeatherGoodForGaming = "NO";
+
+        if (result.temp > maxTemp) {
+            weatherEvaluation += "too hot ";
+            isWeatherGoodForGaming = "YES ";
+        } if (result.temp < minTemp) {
+            weatherEvaluation += "too cold ";
+            isWeatherGoodForGaming = "YES ";
+        } if (result.precip !== 0 && result.precip !== null) {
+            weatherEvaluation += "too rainy ";
+            isWeatherGoodForGaming = "YES ";
+        } if (result.clouds > maxCloud) {
+            weatherEvaluation += "too cloudy";
+            isWeatherGoodForGaming = "YES ";
+        }
+
+        isWeatherGoodForGaming === "YES " ? weatherEvaluation = "Today is a good day to game".concat(weatherEvaluation) 
+        : weatherEvaluation = "Today is NOT a good day to game because the weather is too nice";
+        HTMLRenderer.showDayForecast(weatherData, isWeatherGoodForGaming, weatherEvaluation);
     }
 };
 $(App.reset());
