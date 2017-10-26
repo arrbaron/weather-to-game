@@ -8,16 +8,15 @@ const HTMLRenderer = {
         $(sectionToShow).removeClass("hidden");
     },
 
-    showDayForecast: function(data) {
-        console.log(this);
+    showDayForecast: function(data, isWeatherGood, weatherEvaluation) {
         data ? console.log(data) : HTMLRenderer.showErr();
         let result = data.data[0];
 
         $(".day-forecast__results__result").remove();
         $(".day-forecast__results").prepend(`
         <div class="day-forecast__results__result">
-            <p>YES</p>    
-            <p>Today is a good day to game in ${result.city_name}, ${result.country_code}.</p>
+            <p>${isWeatherGood}</p>    
+            <p>${weatherEvaluation} outside in ${result.city_name}, ${result.country_code}.</p>
             <p>How about <a href="#">Cosmic Encounter?</a></p>
             <p><a href="#">Get another recommendation</a></p>
             <h3>Today's weather for ${result.city_name}, ${result.country_code}</h3>
@@ -29,7 +28,7 @@ const HTMLRenderer = {
         `);
     },
 
-    showExtendedForecast: function() {
+    showExtendedForecast: function(weatherEvaluation) {
         $(".intro").addClass("hidden");
         $(".day-forecast").addClass("hidden");
         $(".extended-forecast").removeClass("hidden");
