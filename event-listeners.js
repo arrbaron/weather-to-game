@@ -39,9 +39,10 @@ const EventListeners = {
     },
 
     handleExtendedForecastDayClicked: function(query) {
-        $(".extended-forecast__day__link").click((event) => {
-            HTMLRenderer.showSection(".day-forecast");
-            console.log("ooh that tickles");
+        console.log("listener started");
+        $(".extended-forecast").on("click", ".extended-forecast__day__link", function(event) {
+            App.dayIndex = $(this).attr("data-index");
+            App.search(query);
         });
     }
 };

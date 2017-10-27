@@ -3,6 +3,7 @@ const WEATHERBIT_URL = "https://api.weatherbit.io/v2.0/forecast/daily";
 const App = {
     data: [],
     units: "M",
+    dayIndex: 0,
     
     reset: function() {
         EventListeners.startListeners();
@@ -30,7 +31,8 @@ const App = {
 
     evaluateWeather: function(data) {
         this.data = data;
-        let result = data.data[0];
+        // let result = data.data[0];
+        let result = data.data[App.dayIndex];
         let maxTemp = 28;
         let minTemp = 18;
         let maxCloud = 25;
