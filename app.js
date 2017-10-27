@@ -59,4 +59,5 @@ const App = {
         HTMLRenderer.showDayForecast(data, isWeatherGoodForGaming, weatherEvaluation);
     }
 };
+
 $(App.reset());

@@ -12,34 +12,39 @@
     <link rel="stylesheet" type="text/css" href="main.css">
 </head>
 <body>
-    <header role="banner">
-        <a class="header__link">
-            <h2>Wondering whether to game?</h2>
-            <h1>Weather to Game</h1>
-            <img src="images/logo.png" class="logo">
-        </a>
-    </header>
-    <main role="main">
-        <div class="intro">
-            <p>Is today a good day to game?</p>
-            <p>Enter your zip code/city to find out...</p>
-            <form class="intro__form">
-                <input type="text" class="intro__query" placeholder="boston, ma" required>
-                <input type="submit" class="intro__submit">
-            </form>
-        </div>
-        <div class="day-forecast hidden">
-            <div class="day-forecast__results">
+    <div class="row">
+        <header role="banner" class="col col-full">
+            <a class="header__link">
+                <h2>Wondering whether to game?</h2>
+                <h1>Weather to Game</h1>
+                <img src="images/logo.png" class="logo"> </a>
+        </header>
+        <main role="main" class="row row--centered col col-full">
+            <div class="intro row">
+                <div class="col col-half">
+                    <p>A bad day outside means a good day to play a game inside.</p>
+                    <p>So, is today a good day to game?</p>
+                    <p>Enter your zip code/city to find out...</p>
+                </div>
+                <div class="col col-half">
+                    <form class="intro__form">
+                        <input type="text" class="intro__query" placeholder="boston, ma" required>
+                        <input type="submit" class="intro__submit"> </form>
+                </div>
             </div>
-            <p>Planning ahead? <a href="#" class="extended-forecast__link">Get the extended forecast</a></p>
-        </div>
-        <div class="extended-forecast hidden">
-            <h3>Extended forecast for Boston, Massachussets</h3>
-            <p>Click day for more info</p>
-            <div class="extended-forecast__results">
+            <div class="day-forecast hidden">
+                <div class="day-forecast__results"> </div>
+                <p>Planning ahead?
+                    <a href="#" class="extended-forecast__link">Get the extended forecast</a>
+                </p>
             </div>
-        </div>
-    </main>
+            <div class="extended-forecast hidden">
+                <h3>Extended forecast for Boston, Massachussets</h3>
+                <p>Click day for more info</p>
+                <div class="extended-forecast__results"> </div>
+            </div>
+        </main>
+    </div>
     <footer role="contentinfo" class="hidden">°C/°F</footer>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="event-listeners.js"></script>

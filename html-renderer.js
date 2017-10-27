@@ -17,7 +17,7 @@ const HTMLRenderer = {
         $(".day-forecast__results").prepend(`
         <div class="day-forecast__results__result">
             <span class="is-weather-good">${isWeatherGood}</span> <span>${weatherEvaluation} outside in ${data.city_name}, ${data.country_code}.</span>
-            <p>How about <a href="#">Cosmic Encounter?</a></p>
+            <p>How about <a href="https://www.amazon.com/Fantasy-Flight-Games-CE01-Encounter/dp/1589944968" target="_blank">Cosmic Encounter?</a></p>
             <p><a href="#">Get another recommendation</a></p>
             <h3>${day.datetime}'s weather for ${data.city_name}, ${data.country_code}</h3>
             <img src="icons/${day.weather.icon}.png">
@@ -25,18 +25,20 @@ const HTMLRenderer = {
                 <li>${day.weather.description}</li>
                 <li>${day.temp}°C</li>
             </ul>
+        </div>
         `);
     },
 
     showExtendedForecast: function(data) {
-        let maxResults = 6;
+        const maxResults = 6;
         
+        // use a foreeach instead
         for (let i = 0; i < maxResults; i++) {
             let day = data.data[i];
 
             $(".extended-forecast__results").append(`
-            <div class="extended-forecast__day">
-                <a class="extended-forecast__day__link" data-index="${i}">
+            <div class="extended-forecast-day">
+                <a class="extended-forecast-day__link" data-index="${i}">
                     <h4>${day.datetime}</h4>
                     <img src="icons/${day.weather.icon}.png" alt="">
                     <p>${day.weather.description}</p>
