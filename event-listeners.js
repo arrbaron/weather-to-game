@@ -23,6 +23,7 @@ const EventListeners = {
             const queryTarget = $(this).find(".intro__query");
             this.searchQuery = queryTarget.val();
 
+            App.dayIndex = 0;
             App.search(this.searchQuery);
             EventListeners.handleExtendedForecastLinkClicked(this.searchQuery);
             EventListeners.handleExtendedForecastDayClicked(this.searchQuery);

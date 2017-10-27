@@ -7,14 +7,16 @@
     <meta name="description" content="Weather to Game is a service that tells you whether the weather will be fit for gaming">
     <title>Weather to Game</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/normalize/4.1.1/normalize.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Acme|Anton" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="grid.css">
     <link rel="stylesheet" type="text/css" href="main.css">
 </head>
 <body>
     <header role="banner">
         <a class="header__link">
-            <h1>Weather to Game</h1>
             <h2>Wondering whether to game?</h2>
+            <h1>Weather to Game</h1>
+            <img src="images/logo.png" class="logo">
         </a>
     </header>
     <main role="main">
@@ -22,7 +24,7 @@
             <p>Is today a good day to game?</p>
             <p>Enter your zip code/city to find out...</p>
             <form class="intro__form">
-                <input type="text" class="intro__query" placeholder="Boston" required>
+                <input type="text" class="intro__query" placeholder="boston, ma" required>
                 <input type="submit" class="intro__submit">
             </form>
         </div>
