@@ -16,11 +16,10 @@ const HTMLRenderer = {
         $(".day-forecast__results__result").remove();
         $(".day-forecast__results").prepend(`
         <div class="day-forecast__results__result">
-            <p>${isWeatherGood}</p>    
-            <p>${weatherEvaluation} outside in ${data.city_name}, ${data.country_code}.</p>
+            <span class="is-weather-good">${isWeatherGood}</span> <span>${weatherEvaluation} outside in ${data.city_name}, ${data.country_code}.</span>
             <p>How about <a href="#">Cosmic Encounter?</a></p>
             <p><a href="#">Get another recommendation</a></p>
-            <h3>Today's weather for ${data.city_name}, ${data.country_code}</h3>
+            <h3>${day.datetime}'s weather for ${data.city_name}, ${data.country_code}</h3>
             <img src="icons/${day.weather.icon}.png">
             <ul>
                 <li>${day.weather.description}</li>

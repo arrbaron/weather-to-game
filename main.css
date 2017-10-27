@@ -2,11 +2,34 @@
     box-sizing: border-box;
 }
 
+html {
+    background-color: #B26B00;
+    color: #132024;
+    font-family: "Anton", sans-serif;
+}
+
 header {
     border-bottom: 1px solid black;
     width: 50%;
     margin-left: auto;
     margin-right: auto;
+    font-family: "Acme", sans-serif;
+}
+
+ul {
+    margin-left: auto;
+    margin-right: auto;
+    list-style: none;
+    padding: 0;
+}
+
+.logo {
+    width: 75px;
+    height: 75px;
+}
+
+.is-weather-good {
+    font-size: 1.5em;
 }
 
 .hidden {
