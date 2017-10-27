@@ -11,8 +11,7 @@ const HTMLRenderer = {
 
     showDayForecast: function(data, isWeatherGood, weatherEvaluation) {
         data ? console.log("") : HTMLRenderer.showErr();
-        let day = data.data[0];
-        console.log(data);
+        let day = data.data[App.dayIndex];
 
         $(".day-forecast__results__result").remove();
         $(".day-forecast__results").prepend(`
@@ -38,7 +37,7 @@ const HTMLRenderer = {
 
             $(".extended-forecast__results").append(`
             <div class="extended-forecast__day">
-                <a class="extended-forecast__day__link">    
+                <a class="extended-forecast__day__link" data-index="${i}">
                     <h4>${day.datetime}</h4>
                     <img src="icons/${day.weather.icon}.png" alt="">
                     <p>${day.weather.description}</p>
