@@ -1,7 +1,7 @@
-const WEATHERBIT_CURRENT_URL = "https://api.weatherbit.io/v2.0/current";
-const WEATHERBIT_EXTENDED_URL = "https://api.weatherbit.io/v2.0/forecast/daily";
+const WEATHERBIT_URL = "https://api.weatherbit.io/v2.0/forecast/daily";
 
 const App = {
+    data: [],
     units: "M",
     
     reset: function() {
@@ -13,19 +13,23 @@ const App = {
         this.getDataFromAPI(query, this.evaluateWeather);
     },
 
+    searchExtended: function(query) {
+        this.getDataFromAPI(query, HTMLRenderer.showExtendedForecast);
+    },
+
     getDataFromAPI: (searchTerm, callback) => {
         const query = {
             key: "62362ac75c5948fc9871e28bb51d0d19",
-            units: App.units
+            units: App.units,
+            days: 6
         };
         isNaN(searchTerm) ? query.city = searchTerm : query.postal_code = searchTerm;
 
-        $.getJSON(WEATHERBIT_CURRENT_URL, query, callback).fail(HTMLRenderer.showErr);
-        HTMLRenderer.showSection(".day-forecast");
+        $.getJSON(WEATHERBIT_URL, query, callback).fail(HTMLRenderer.showErr);
     },
 
     evaluateWeather: function(data) {
-        let weatherData = data;
+        this.data = data;
         let result = data.data[0];
         let maxTemp = 28;
         let minTemp = 18;
@@ -49,7 +53,8 @@ const App = {
 
         isWeatherGoodForGaming === "YES " ? weatherEvaluation = "Today is a good day to game".concat(weatherEvaluation) 
         : weatherEvaluation = "Today is NOT a good day to game because the weather is too nice";
-        HTMLRenderer.showDayForecast(weatherData, isWeatherGoodForGaming, weatherEvaluation);
+        HTMLRenderer.showSection(".day-forecast");
+        HTMLRenderer.showDayForecast(data, isWeatherGoodForGaming, weatherEvaluation);
     }
 };
 $(App.reset());
