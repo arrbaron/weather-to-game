@@ -7,10 +7,12 @@ const App = {
     data: [],
     units: "M",
     dayIndex: 0,
+    baseGame: "ticket to ride",
     
     reset: function() {
         EventListeners.startListeners();
         HTMLRenderer.showSection(".intro");
+        console.log(Math.floor(Math.random() * 20));
     },
 
     searchWeather: function(query) {
@@ -61,7 +63,7 @@ const App = {
         HTMLRenderer.showSection(".day-forecast");
         HTMLRenderer.showDayForecast(data, isWeatherGoodForGaming, weatherEvaluation);
 
-        App.getGameDataFromAPI("cosmic encounter", HTMLRenderer.showGame);
+        App.getGameDataFromAPI(App.baseGame, HTMLRenderer.showGame);
     },
 
     getGameDataFromAPI: function(searchTerm, callback) {
@@ -69,8 +71,9 @@ const App = {
             q: searchTerm,
             type: "games",
             info: 1,
-            limit: 1,
-            k: "289089-Weathert-XWI5W03O"
+            limit: 20,
+            k: "289089-Weathert-XWI5W03O",
+            // callback: HTMLRenderer.showGame
         };
 
         $.getJSON(TASTEDIVE_URL, query, callback).fail(HTMLRenderer.showErr);
