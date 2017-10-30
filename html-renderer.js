@@ -28,6 +28,7 @@ const HTMLRenderer = {
                 <li>${day.temp}°C</li>
             </ul>
             <p>Planning ahead? <a href="#" class="extended-forecast__link">Get the extended forecast</a></p>
+            <p>°C/°F</p>
        </div>
         `);
     },
@@ -68,16 +69,18 @@ const HTMLRenderer = {
     },
 
     showGame: function(data) {
-        let game = data.Similar.Info[0];
+        console.log(data);
+        let randomIndex = Math.floor(Math.random() * 20);
+        let game = data.Similar.Results[randomIndex];
         console.log(game);
 
         $(".day-forecast__results--recommendation").append(`
         <div class="recommendation">    
-            <p>How about <a href="https://www.amazon.com/s/ref=nb_sb_noss_2?url=search-alias%3Daps&field-keywords=${game.Name}" target="_blank">${game.Name}?</a></p>
+            <p>How about <a href="https://www.amazon.com/s/ref=nb_sb_noss_2?url=search-alias%3Dtoys-and-games&field-keywords=${game.Name}" target="_blank">${game.Name}?</a></p>
             <iframe src="${game.yUrl}"
             width="560" height="315" frameborder="0"></iframe>
             <p class="recommendation__description">${game.wTeaser}</p>
-            <p><a href="#">Get another recommendation</a></p>
+            <p><a class="recommendation__link">Get another recommendation</a></p>
         </div>
         `);
     },
