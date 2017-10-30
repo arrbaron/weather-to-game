@@ -19,8 +19,6 @@ const HTMLRenderer = {
         <div class="day-forecast__results--recommendation col col-half">
             <div class="is-weather-good">${isWeatherGood}</div> 
             <div>${weatherEvaluation} outside in ${data.city_name}, ${data.country_code}.</div>
-            <p>How about <a href="https://www.amazon.com/Fantasy-Flight-Games-CE01-Encounter/dp/1589944968" target="_blank">Cosmic Encounter?</a></p>
-            <p><a href="#">Get another recommendation</a></p>
         </div>
         <div class="day-forecast__results--weather col col-half">
             <h3>${day.datetime}'s weather for ${data.city_name}, ${data.country_code}</h3>
@@ -29,6 +27,7 @@ const HTMLRenderer = {
                 <li>${day.weather.description}</li>
                 <li>${day.temp}°C</li>
             </ul>
+            <p>Planning ahead? <a href="#" class="extended-forecast__link">Get the extended forecast</a></p>
        </div>
         `);
     },
@@ -66,6 +65,21 @@ const HTMLRenderer = {
                 `);  
             } 
         }
+    },
+
+    showGame: function(data) {
+        let game = data.Similar.Info[0];
+        console.log(game);
+
+        $(".day-forecast__results--recommendation").append(`
+        <div class="recommendation">    
+            <p>How about <a href="https://www.amazon.com/s/ref=nb_sb_noss_2?url=search-alias%3Daps&field-keywords=${game.Name}" target="_blank">${game.Name}?</a></p>
+            <iframe src="${game.yUrl}"
+            width="560" height="315" frameborder="0"></iframe>
+            <p class="recommendation__description">${game.wTeaser}</p>
+            <p><a href="#">Get another recommendation</a></p>
+        </div>
+        `);
     },
 
     showErr: function() {

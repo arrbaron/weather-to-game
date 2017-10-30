@@ -1,4 +1,5 @@
 const WEATHERBIT_URL = "https://api.weatherbit.io/v2.0/forecast/daily";
+const TASTEDIVE_URL = "https://tastedive.com/api/similar";
 // shut up
 // tastedive key = 289089-Weathert-XWI5W03O
 
@@ -12,15 +13,15 @@ const App = {
         HTMLRenderer.showSection(".intro");
     },
 
-    search: function(query) {
-        this.getDataFromAPI(query, this.evaluateWeather);
+    searchWeather: function(query) {
+        this.getWeatherDataFromAPI(query, this.evaluateWeather);
     },
 
-    searchExtended: function(query) {
-        this.getDataFromAPI(query, HTMLRenderer.showExtendedForecast);
+    searchWeatherExtended: function(query) {
+        this.getWeatherDataFromAPI(query, HTMLRenderer.showExtendedForecast);
     },
 
-    getDataFromAPI: (searchTerm, callback) => {
+    getWeatherDataFromAPI: (searchTerm, callback) => {
         const query = {
             key: "62362ac75c5948fc9871e28bb51d0d19",
             units: App.units,
@@ -59,6 +60,20 @@ const App = {
         : weatherEvaluation = "Today is NOT a good day to game because the weather is too nice";
         HTMLRenderer.showSection(".day-forecast");
         HTMLRenderer.showDayForecast(data, isWeatherGoodForGaming, weatherEvaluation);
+
+        App.getGameDataFromAPI("cosmic encounter", HTMLRenderer.showGame);
+    },
+
+    getGameDataFromAPI: function(searchTerm, callback) {
+        const query = {
+            q: searchTerm,
+            type: "games",
+            info: 1,
+            limit: 1,
+            k: "289089-Weathert-XWI5W03O"
+        };
+
+        $.getJSON(TASTEDIVE_URL, query, callback).fail(HTMLRenderer.showErr);
     }
 };
 
