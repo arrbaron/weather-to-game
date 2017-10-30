@@ -41,16 +41,30 @@ const HTMLRenderer = {
         for (let i = 0; i < maxResults; i++) {
             let day = data.data[i];
 
-            $(".extended-forecast__results").append(`
-            <div class="extended-forecast-day">
-                <a class="extended-forecast-day__link" data-index="${i}">
-                    <h4>${day.datetime}</h4>
-                    <img src="icons/${day.weather.icon}.png" alt="">
-                    <p>${day.weather.description}</p>
-                    <p>${day.temp}°C</p>
-                </a>    
-            </div>
+            if (i < 3) {
+                $(".extended-forecast__results--top").append(`
+                <div class="extended-forecast-day col col-third">
+                    <a class="extended-forecast-day__link" data-index="${i}">
+                        <h4>${day.datetime}</h4>
+                        <img src="icons/${day.weather.icon}.png" alt="">
+                     <p>${day.weather.description}</p>
+                        <p>${day.temp}°C</p>
+                    </a>    
+                </div>
             `);
+            }
+            else {
+                $(".extended-forecast__results--bottom").append(`
+                <div class="extended-forecast-day col col-third">
+                    <a class="extended-forecast-day__link" data-index="${i}">
+                        <h4>${day.datetime}</h4>
+                        <img src="icons/${day.weather.icon}.png" alt="">
+                     <p>${day.weather.description}</p>
+                        <p>${day.temp}°C</p>
+                    </a>    
+                </div>
+                `);  
+            } 
         }
     },
 
