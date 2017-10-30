@@ -41,7 +41,8 @@ const EventListeners = {
 
     handleExtendedForecastDayClicked: function(query) {
         console.log("listener started");
-        $(".extended-forecast").on("click", ".extended-forecast__day__link", function(event) {
+        $(".extended-forecast").on("click", ".extended-forecast-day__link", function(event) {
+            console.log("day clicked");
             App.dayIndex = $(this).attr("data-index");
             App.search(query);
         });
