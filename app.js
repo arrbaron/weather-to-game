@@ -1,4 +1,6 @@
 const WEATHERBIT_URL = "https://api.weatherbit.io/v2.0/forecast/daily";
+// shut up
+// tastedive key = 289089-Weathert-XWI5W03O
 
 const App = {
     data: [],

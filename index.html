@@ -32,20 +32,16 @@
                         <input type="submit" class="intro__submit"> </form>
                 </div>
             </div>
-            <div class="day-forecast hidden">
-                <div class="day-forecast__results"> </div>
-                <p>Planning ahead?
-                    <a href="#" class="extended-forecast__link">Get the extended forecast</a>
-                </p>
+            <div class="day-forecast row row--centered hidden">
+                <div class="day-forecast__results row"></div>
+                <p class="row row--centered">Planning ahead? <a href="#" class="extended-forecast__link">Get the extended forecast</a></p>
             </div>
-            <div class="extended-forecast hidden">
-                <h3>Extended forecast for Boston, Massachussets</h3>
-                <p>Click day for more info</p>
+            <div class="extended-forecast row hidden">
                 <div class="extended-forecast__results"> </div>
             </div>
         </main>
     </div>
-    <footer role="contentinfo" class="hidden">°C/°F</footer>
+    <footer role="contentinfo" class="row row--centered hidden">°C/°F</footer>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="event-listeners.js"></script>
     <script src="html-renderer.js"></script>
