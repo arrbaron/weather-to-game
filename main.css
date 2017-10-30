@@ -48,3 +48,7 @@ ul {
 a {
     cursor: pointer;
 }
+
+.recommendation__description {
+    font-size: 0.75em;
+}
