@@ -28,6 +28,8 @@ const EventListeners = {
             EventListeners.handleExtendedForecastLinkClicked(this.searchQuery);
             EventListeners.handleExtendedForecastDayClicked(this.searchQuery);
             EventListeners.handleRecommendationLinkClicked();
+            EventListeners.handleCelsiusClicked();
+            EventListeners.handleFahrenheitClicked();
             queryTarget.val("");
         });
     },
@@ -52,5 +54,17 @@ const EventListeners = {
         $(".day-forecast").on("click", ".recommendation__link", function() {
             App.getGameDataFromAPI(App.baseGame, HTMLRenderer.showGame);
         });
-    }
+    },
+
+    handleCelsiusClicked: function() {
+        $(".day-forecast").on("click", ".day-forecast__celsius", function() {
+            App.changeUnits("M");
+        });
+    },
+
+    handleFahrenheitClicked: function () {
+        $(".day-forecast").on("click", ".day-forecast__fahrenheit", function () {
+            App.changeUnits("I");
+        });
+    },
 };
