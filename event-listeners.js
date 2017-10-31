@@ -43,7 +43,7 @@ const EventListeners = {
     handleExtendedForecastDayClicked: function(query) {
         console.log("listener started");
         $(".extended-forecast").on("click", ".extended-forecast-day__link", function() {
-            console.log("day clicked");
+            $(".recommendation").remove();
             App.dayIndex = $(this).attr("data-index");
             App.searchWeather(query);
         });

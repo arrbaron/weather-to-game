@@ -58,7 +58,7 @@ const App = {
             isWeatherGoodForGaming = "YES ";
         }
 
-        isWeatherGoodForGaming === "YES " ? weatherEvaluation = "Today is a good day to game".concat(weatherEvaluation) 
+        isWeatherGoodForGaming === "YES " ? weatherEvaluation = "It is a good day to game".concat(weatherEvaluation) 
         : weatherEvaluation = "Today is NOT a good day to game because the weather is too nice";
         HTMLRenderer.showSection(".day-forecast");
         HTMLRenderer.showDayForecast(data, isWeatherGoodForGaming, weatherEvaluation);
