@@ -43,7 +43,6 @@ const EventListeners = {
     handleExtendedForecastDayClicked: function(query) {
         console.log("listener started");
         $(".extended-forecast").on("click", ".extended-forecast-day__link", function() {
-            $(".recommendation").remove();
             App.dayIndex = $(this).attr("data-index");
             App.searchWeather(query);
         });
@@ -51,7 +50,6 @@ const EventListeners = {
 
     handleRecommendationLinkClicked: function() {
         $(".day-forecast").on("click", ".recommendation__link", function() {
-            $(".recommendation").remove();
             App.getGameDataFromAPI(App.baseGame, HTMLRenderer.showGame);
         });
     }
