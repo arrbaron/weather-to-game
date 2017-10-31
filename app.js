@@ -77,6 +77,13 @@ const App = {
         };
 
         $.getJSON(TASTEDIVE_URL, query, callback).fail(HTMLRenderer.showErr);
+    },
+
+    changeUnits: function(units) {
+        if (App.units !== units) {
+            App.units = units;
+            HTMLRenderer.displayNewUnits(units);
+        }
     }
 };
 

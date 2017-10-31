@@ -1,5 +1,6 @@
 const HTMLRenderer = {
-    
+    displayUnit: "C",
+
     showSection: function(sectionToShow) {
         const sections = [".intro", ".day-forecast", ".extended-forecast"];
         sections.forEach(function(item, index) {
@@ -25,10 +26,10 @@ const HTMLRenderer = {
             <img src="icons/${day.weather.icon}.png">
             <ul>
                 <li>${day.weather.description}</li>
-                <li>${day.temp}°C</li>
+                <li class="day-forecast__temp">${Math.round(day.temp)}</li><span class="day-forecast__unit">°${HTMLRenderer.displayUnit}</span>
             </ul>
             <p>Planning ahead? <a href="#" class="extended-forecast__link">Get the extended forecast</a></p>
-            <p>°C/°F</p>
+            <p><a class="day-forecast__celsius">°C</a>/<a class="day-forecast__fahrenheit">°F</a></p>
        </div>
         `);
     },
@@ -48,7 +49,7 @@ const HTMLRenderer = {
                         <h4>${day.datetime}</h4>
                         <img src="icons/${day.weather.icon}.png" alt="">
                      <p>${day.weather.description}</p>
-                        <p>${day.temp}°C</p>
+                        <p>${Math.round(day.temp)}°${HTMLRenderer.displayUnit}</p>
                     </a>    
                 </div>
             `);
@@ -60,7 +61,7 @@ const HTMLRenderer = {
                         <h4>${day.datetime}</h4>
                         <img src="icons/${day.weather.icon}.png" alt="">
                      <p>${day.weather.description}</p>
-                        <p>${day.temp}°C</p>
+                        <p>${Math.round(day.temp)}°${HTMLRenderer.displayUnit}</p>
                     </a>    
                 </div>
                 `);  
@@ -90,5 +91,26 @@ const HTMLRenderer = {
     showErr: function() {
         alert("error");
         return;
-    }
+    },
+
+    displayNewUnits: function(units) {
+        let oldTemp = $(".day-forecast__temp").html();
+        let newTemp = 0;
+
+        if (units === "I") {
+            // celsius to fahrenheit
+            newTemp = Math.round((oldTemp * 9/5) + 32);
+            HTMLRenderer.displayUnit = "F";
+        }
+        else if (units === "M") {
+            // fahrenheit to celsius
+            newTemp = Math.round((oldTemp - 32) * 5/9);
+            HTMLRenderer.displayUnit = "C";
+        }
+
+        $(".day-forecast__temp").html(`${newTemp}`);
+        $(".day-forecast__unit").html(`°${HTMLRenderer.displayUnit}`);
+    },
+
+
 };
