@@ -69,10 +69,12 @@ const HTMLRenderer = {
     },
 
     showGame: function(data) {
-        console.log(data);
         let randomIndex = Math.floor(Math.random() * 20);
         let game = data.Similar.Results[randomIndex];
-        console.log(game);
+
+        console.log("showing recommendation");
+
+        $(".recommendation").remove();
 
         $(".day-forecast__results--recommendation").append(`
         <div class="recommendation">    
