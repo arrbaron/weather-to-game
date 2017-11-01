@@ -1,5 +1,6 @@
 const WEATHERBIT_URL = "https://api.weatherbit.io/v2.0/forecast/daily";
 const TASTEDIVE_URL = "https://tastedive.com/api/similar";
+
 // shut up
 // tastedive key = 289089-Weathert-XWI5W03O
 
@@ -27,11 +28,12 @@ const App = {
         const query = {
             key: "62362ac75c5948fc9871e28bb51d0d19",
             units: App.units,
-            days: 6
+            days: 6,
         };
         isNaN(searchTerm) ? query.city = searchTerm : query.postal_code = searchTerm;
 
         $.getJSON(WEATHERBIT_URL, query, callback).fail(HTMLRenderer.showErr);
+        // look into using $.ajax
     },
 
     evaluateWeather: function(data) {
