@@ -1,6 +1,7 @@
 .row {
     display: flex;
     flex-flow: row wrap;
+    max-width: 1600px;
 }
 
 .row--centered {
@@ -25,4 +26,27 @@ header, main, footer {
 
 .col-third {
     flex: 1 33.3%;
+}
+
+@media only screen and (max-width:400px) {
+    .row {
+        display: block;
+        /* margin-left: auto;
+        margin-right: auto; */
+        width: 100%;
+    }
+
+    .col-half, .col-third {
+        /* margin-left: auto;
+        margin-right: auto; */
+        /* width: 100%; */
+    }
+
+    iframe {
+        width: 100%;
+    }
+
+    header, main {
+        width: 100%;
+    }
 }
