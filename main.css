@@ -11,10 +11,19 @@ html {
 a {
     cursor: pointer;
     text-decoration: underline;
+    transition: all 0.2s ease;
 }
 
 a:hover {
-    /* font-weight: bold; */
+    color: #654E6D;
+}
+
+header a {
+    text-decoration: none;
+}
+
+header a:hover {
+    color: white;
 }
 
 header {
@@ -24,14 +33,15 @@ header {
     padding-top: 10px;
     margin-left: auto;
     margin-right: auto;
+    margin-bottom: 10px;
     font-family: "Acme", sans-serif;
-    color: #C0B9C2;
+    color: white;
 }
 
 main {
     font-size: 1.25em;
-    margin: 20px;
-    padding: 2%;
+    margin: 10px 20px 10px 20px;
+    padding: 0 2% 2% 2%;
     background-color: #C0B9C2;
     border-radius: 4px;
 }
@@ -62,6 +72,7 @@ main {
 
 [type="submit"]:hover, [type="submit"]:focus {
     color: #654E6D;
+    transform: scale(0.9);
 }
 
 .day-forecast__results--recommendation, .day-forecast__results--weather {
@@ -72,6 +83,10 @@ main {
 h1, h2 {
     margin-top: 5px;
     margin-bottom: 5px;
+}
+
+h3 {
+    margin-bottom: 0px;
 }
 
 ul {
@@ -102,16 +117,31 @@ ul {
 .extended-forecast-day {
     border: 3px solid black;
     border-radius: 4px;
-    margin-top: 3%;
     transition: all 0.3s ease;
+    margin-bottom: 5px;
 }
 
 .extended-forecast-day:hover {
     background-color: white;
-    border-radius: 50%;
+    transform: scale(0.9);
 }
 
 p {
     margin-left: 10%;
     margin-right: 10%;
+}
+
+
+.extended-forecast-day p, .extended-forecast-day h4 {
+    margin: 3px;
+}
+
+.day-forecast__description {
+    margin-top: 0px;
+    margin-bottom: 0px;
+}
+
+.day-forecast__units {
+    margin-top: 5px;
+    margin-bottom: 5px;
 }

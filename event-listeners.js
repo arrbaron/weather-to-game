@@ -25,28 +25,21 @@ const EventListeners = {
 
             App.dayIndex = 0;
             App.searchWeather(this.searchQuery);
-            EventListeners.handleExtendedForecastLinkClicked(this.searchQuery);
             EventListeners.handleExtendedForecastDayClicked(this.searchQuery);
             EventListeners.handleRecommendationLinkClicked();
             EventListeners.handleCelsiusClicked();
             EventListeners.handleFahrenheitClicked();
             queryTarget.val("");
-        });
-    },
-
-    handleExtendedForecastLinkClicked: function(query) {
-        $(".day-forecast").on("click", ".extended-forecast__link",() => {
             HTMLRenderer.showSection(".extended-forecast");
-            console.log(query);
-            App.searchWeatherExtended(query);
         });
     },
 
     handleExtendedForecastDayClicked: function(query) {
-        console.log("listener started");
-        $(".extended-forecast").on("click", ".extended-forecast-day__link", function() {
+        
+        $(".day-forecast").on("click", ".extended-forecast-day__link", function() {
             App.dayIndex = $(this).attr("data-index");
             App.searchWeather(query);
+            console.log("getting new forecast");
         });
     },
 

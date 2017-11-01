@@ -6,22 +6,17 @@ const TASTEDIVE_URL = "https://tastedive.com/api/similar";
 
 const App = {
     data: [],
-    units: "M",
+    units: "I",
     dayIndex: 0,
     baseGame: "ticket to ride",
     
     reset: function() {
         EventListeners.startListeners();
         HTMLRenderer.showSection(".intro");
-        console.log(Math.floor(Math.random() * 20));
     },
 
     searchWeather: function(query) {
         this.getWeatherDataFromAPI(query, this.evaluateWeather);
-    },
-
-    searchWeatherExtended: function(query) {
-        this.getWeatherDataFromAPI(query, HTMLRenderer.showExtendedForecast);
     },
 
     getWeatherDataFromAPI: (searchTerm, callback) => {
@@ -69,6 +64,8 @@ const App = {
     },
 
     getGameDataFromAPI: function(searchTerm, callback) {
+        console.log("getgamedatafromAPI");
+        
         const query = {
             q: searchTerm,
             type: "games",
