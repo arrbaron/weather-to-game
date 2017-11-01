@@ -3,9 +3,9 @@
 }
 
 html {
-    background-color: #B26B00;
+    background-color: #978A9B;
     color: #132024;
-    font-family: "Anton", sans-serif;
+    font-family: "Work Sans", sans-serif;
 }
 
 a {
@@ -13,17 +13,60 @@ a {
     text-decoration: underline;
 }
 
+a:hover {
+    /* font-weight: bold; */
+}
+
 header {
+    background-color: #654E6D;
     border-bottom: 3px solid black;
     width: 50%;
+    padding-top: 10px;
     margin-left: auto;
     margin-right: auto;
     font-family: "Acme", sans-serif;
-    color: #132024;
+    color: #C0B9C2;
 }
 
 main {
     font-size: 1.25em;
+    margin: 20px;
+    padding: 2%;
+    background-color: #C0B9C2;
+    border-radius: 4px;
+}
+
+[type="submit"] {
+    border-radius: 18px;
+    background-color: #654E6D;
+    color: #C0B9C2;
+    border: 1px solid #654E6D;
+    text-decoration: none;
+    font-weight: bold;
+    padding: .5em 1em;
+    transition: all 0.3s ease;
+}
+
+[type="text"] {
+    padding: .5em;
+    background: transparent;
+    border: 1px solid #654E6D;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+    font-weight: bold;
+}
+
+[type="text"]:focus, [type="text"]:hover, [type="submit"]:hover, [type="submit"]:focus {
+    background-color: white;
+}
+
+[type="submit"]:hover, [type="submit"]:focus {
+    color: #654E6D;
+}
+
+.day-forecast__results--recommendation, .day-forecast__results--weather {
+    /* border: 1.5px solid black; */
+    /* align-self: center; */
 }
 
 h1, h2 {
@@ -53,13 +96,22 @@ ul {
 
 .recommendation__description {
     font-size: 0.75em;
+    text-align: left;
 }
 
 .extended-forecast-day {
     border: 3px solid black;
-    border-radius: 5%;
+    border-radius: 4px;
+    margin-top: 3%;
+    transition: all 0.3s ease;
 }
 
 .extended-forecast-day:hover {
-    background-color: rgb(233, 142, 5)
+    background-color: white;
+    border-radius: 50%;
+}
+
+p {
+    margin-left: 10%;
+    margin-right: 10%;
 }

@@ -20,7 +20,8 @@ header, main, footer {
 }
 
 .col-half {
-    flex: 1 50%;
+    /* FIX THIS */
+    flex: 1 48%;
 }
 
 .col-third {

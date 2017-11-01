@@ -13,6 +13,7 @@ const HTMLRenderer = {
     showDayForecast: function(data, isWeatherGood, weatherEvaluation) {
         data ? console.log("") : HTMLRenderer.showErr();
         let day = data.data[App.dayIndex];
+        let date = new Date(day.datetime).toDateString();
 
         $(".day-forecast__results--recommendation").remove();
         $(".day-forecast__results--weather").remove();
@@ -22,7 +23,7 @@ const HTMLRenderer = {
             <div>${weatherEvaluation} outside in ${data.city_name}, ${data.country_code}.</div>
         </div>
         <div class="day-forecast__results--weather col col-half">
-            <h3>${day.datetime}'s weather for ${data.city_name}, ${data.country_code}</h3>
+            <h3>${date} weather for ${data.city_name}, ${data.country_code}</h3>
             <img src="icons/${day.weather.icon}.png">
             <ul>
                 <li>${day.weather.description}</li>
@@ -41,12 +42,13 @@ const HTMLRenderer = {
         // use a foreeach instead
         for (let i = 0; i < maxResults; i++) {
             let day = data.data[i];
+            let date = new Date(day.datetime).toDateString();
 
             if (i < 3) {
                 $(".extended-forecast__results--top").append(`
                 <div class="extended-forecast-day col col-third">
                     <a class="extended-forecast-day__link" data-index="${i}">
-                        <h4>${day.datetime}</h4>
+                        <h4>${date}</h4>
                         <img src="icons/${day.weather.icon}.png" alt="">
                      <p>${day.weather.description}</p>
                         <p>${Math.round(day.temp)}°${HTMLRenderer.displayUnit}</p>
@@ -58,7 +60,7 @@ const HTMLRenderer = {
                 $(".extended-forecast__results--bottom").append(`
                 <div class="extended-forecast-day col col-third">
                     <a class="extended-forecast-day__link" data-index="${i}">
-                        <h4>${day.datetime}</h4>
+                        <h4>${date}</h4>
                         <img src="icons/${day.weather.icon}.png" alt="">
                      <p>${day.weather.description}</p>
                         <p>${Math.round(day.temp)}°${HTMLRenderer.displayUnit}</p>
