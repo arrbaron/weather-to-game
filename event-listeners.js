@@ -29,6 +29,7 @@ const EventListeners = {
             EventListeners.handleRecommendationLinkClicked();
             EventListeners.handleCelsiusClicked();
             EventListeners.handleFahrenheitClicked();
+            EventListeners.handleSearchClicked();
             queryTarget.val("");
             HTMLRenderer.showSection(".extended-forecast");
         });
@@ -60,4 +61,10 @@ const EventListeners = {
             App.changeUnits("I");
         });
     },
+
+    handleSearchClicked: function() {
+        $(".day-forecast").on("click", ".day-forecast__search", function() {
+            App.reset();
+        });
+    }
 };

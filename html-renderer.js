@@ -62,6 +62,11 @@ const HTMLRenderer = {
                 `);
             } 
         });
+        $(".day-forecast__results--weather").append(`
+            <div class="col col-full">
+                <a class="day-forecast__search">Don't like what you see? Search a different location</a>
+            </div>
+        `);
     },
 
     showGame: function(data) {

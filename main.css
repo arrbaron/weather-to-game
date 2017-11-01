@@ -145,3 +145,8 @@ p {
     margin-top: 5px;
     margin-bottom: 5px;
 }
+
+.day-forecast__search {
+    display: block;
+    margin-top: 20px;
+}
