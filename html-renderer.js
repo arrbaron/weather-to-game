@@ -44,7 +44,7 @@ const HTMLRenderer = {
                         <h4>${date}</h4>
                         <img src="icons/${day.weather.icon}.png" alt="">
                      <p>${day.weather.description}</p>
-                        <p>${Math.round(day.temp)}°${HTMLRenderer.displayUnit}</p>
+                        <span class="day-forecast__temp">${Math.round(day.temp)}</span><span class="day-forecast__unit">°${HTMLRenderer.displayUnit}</span>
                     </a>    
                 </div>
             `);
@@ -56,7 +56,7 @@ const HTMLRenderer = {
                         <h4>${date}</h4>
                         <img src="icons/${day.weather.icon}.png" alt="">
                      <p>${day.weather.description}</p>
-                        <p>${Math.round(day.temp)}°${HTMLRenderer.displayUnit}</p>
+                        <span class="day-forecast__temp">${Math.round(day.temp)}</span><span class="day-forecast__unit">°${HTMLRenderer.displayUnit}</span>
                     </a>    
                 </div>
                 `);
@@ -64,7 +64,7 @@ const HTMLRenderer = {
         });
         $(".day-forecast__results--weather").append(`
             <div class="col col-full">
-                <a class="day-forecast__search">Don't like what you see? Search a different location</a>
+                <a class="day-forecast__search">Search a different location</a>
             </div>
         `);
     },
@@ -95,23 +95,25 @@ const HTMLRenderer = {
     },
 
     displayNewUnits: function(units) {
-        let oldTemp = $(".day-forecast__temp").html();
-        let newTemp = 0;
+        let temperatures = $(".day-forecast").find(".day-forecast__temp");
+        
+        Array.from(temperatures).forEach(item => {
+            let oldTemp = $(item).html();
+            let newTemp = 0;
 
-        if (units === "I") {
-            // celsius to fahrenheit
-            newTemp = Math.round((oldTemp * 9/5) + 32);
-            HTMLRenderer.displayUnit = "F";
-        }
-        else if (units === "M") {
-            // fahrenheit to celsius
-            newTemp = Math.round((oldTemp - 32) * 5/9);
-            HTMLRenderer.displayUnit = "C";
-        }
+            if (units === "I") {
+                // celsius to fahrenheit
+                newTemp = Math.round((oldTemp * 9 / 5) + 32);
+                HTMLRenderer.displayUnit = "F";
+            }
+            else if (units === "M") {
+                // fahrenheit to celsius
+                newTemp = Math.round((oldTemp - 32) * 5 / 9);
+                HTMLRenderer.displayUnit = "C";
+            }
 
-        $(".day-forecast__temp").html(`${newTemp}`);
-        $(".day-forecast__unit").html(`°${HTMLRenderer.displayUnit}`);
-    },
-
-
+            $(item).html(`${newTemp}`);
+            $(item).siblings(".day-forecast__unit").html(`°${HTMLRenderer.displayUnit}`);
+        });
+    }
 };
