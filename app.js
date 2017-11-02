@@ -34,6 +34,11 @@ const App = {
     },
 
     evaluateWeather: function(data) {
+        if (!data) {
+            App.reset();
+            HTMLRenderer.showErr();
+        }
+        
         this.data = data;
         // let result = data.data[0];
         let result = data.data[App.dayIndex];

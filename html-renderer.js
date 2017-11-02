@@ -8,6 +8,7 @@ const HTMLRenderer = {
         });
         $(sectionToShow).removeClass("hidden");
         $("footer").removeClass("hidden");
+        $(".intro__error").remove();
     },
 
     showDayForecast: function(data, isWeatherGood, weatherEvaluation) {
@@ -90,7 +91,9 @@ const HTMLRenderer = {
     },
 
     showErr: function() {
-        alert("error");
+        $(".intro").append(`
+            <p class="intro__error">Sorry, no results found.</p>
+        `)
         return;
     },
 
