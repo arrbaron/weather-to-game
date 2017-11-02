@@ -131,6 +131,9 @@ p {
     margin-right: 10%;
 }
 
+iframe {
+    border: 3px solid black;
+}
 
 .extended-forecast-day p, .extended-forecast-day h4 {
     margin: 3px;
@@ -142,8 +145,8 @@ p {
 }
 
 .day-forecast__units {
-    margin-top: 5px;
-    margin-bottom: 5px;
+    margin-top: 0;
+    margin-bottom: 10px;
 }
 
 .day-forecast__search {
@@ -151,7 +154,7 @@ p {
     margin-top: 20px;
 }
 
-@media only screen and (max-width:400px) {
+@media only screen and (max-width:640px) {
     .row {
         display: block;
         /* margin-left: auto;

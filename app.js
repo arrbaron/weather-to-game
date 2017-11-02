@@ -8,7 +8,9 @@ const App = {
     data: [],
     units: "I",
     dayIndex: 0,
-    baseGame: "ticket to ride",
+    baseGame: "cosmic encounter",
+    maxTemp: 82,
+    minTemp: 60,
     
     reset: function() {
         EventListeners.startListeners();
@@ -35,16 +37,14 @@ const App = {
         this.data = data;
         // let result = data.data[0];
         let result = data.data[App.dayIndex];
-        let maxTemp = 28;
-        let minTemp = 18;
         let maxCloud = 25;
         let weatherEvaluation = " because it's ";
         let isWeatherGoodForGaming = "NO";
 
-        if (result.temp > maxTemp) {
+        if (result.temp > App.maxTemp) {
             weatherEvaluation += "too hot ";
             isWeatherGoodForGaming = "YES ";
-        } if (result.temp < minTemp) {
+        } if (result.temp < App.minTemp) {
             weatherEvaluation += "too cold ";
             isWeatherGoodForGaming = "YES ";
         } if (result.precip !== 0 && result.precip !== null) {
@@ -56,7 +56,7 @@ const App = {
         }
 
         isWeatherGoodForGaming === "YES " ? weatherEvaluation = "It is a good day to game".concat(weatherEvaluation) 
-        : weatherEvaluation = "Today is NOT a good day to game because the weather is too nice";
+        : weatherEvaluation = "It is NOT a good day to game because the weather is too nice";
         HTMLRenderer.showSection(".day-forecast");
         HTMLRenderer.showDayForecast(data, isWeatherGoodForGaming, weatherEvaluation);
 
@@ -70,7 +70,7 @@ const App = {
             q: searchTerm,
             type: "games",
             info: 1,
-            limit: 20,
+            limit: 21,
             k: "289089-Weathert-XWI5W03O",
             // callback: HTMLRenderer.showGame
         };
@@ -82,6 +82,16 @@ const App = {
         if (App.units !== units) {
             App.units = units;
             HTMLRenderer.displayNewUnits(units);
+            
+            if (App.units === "I") {
+                App.maxTemp = 82;
+                App.minTemp = 60;
+                
+            }
+            else {
+                App.maxTemp = 27.7;
+                App.minTemp = 15.5;
+            }
         }
     }
 };
