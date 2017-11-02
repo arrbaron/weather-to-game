@@ -19,12 +19,12 @@ const HTMLRenderer = {
         $(".extended-forecast-day").remove();
         $(".day-forecast__results").prepend(`
         <div class="day-forecast__results--recommendation col col-half">
-            <div class="is-weather-good">${isWeatherGood}</div> 
+            <h2 class="is-weather-good">${isWeatherGood}</h2> 
             <div class="weather-evaluation">${weatherEvaluation} outside in ${data.city_name}, ${data.country_code}.</div>
         </div>
         <div class="day-forecast__results--weather col col-half">
             <h3>${date} weather for ${data.city_name}, ${data.country_code}</h3>
-            <img src="icons/${day.weather.icon}.png">
+            <img src="icons/${day.weather.icon}.png" alt="${day.weather.description} icon">
             <p class="day-forecast__description">${day.weather.description} | 
                 <span class="day-forecast__temp">${Math.round(day.temp)}</span><span class="day-forecast__unit">°${HTMLRenderer.displayUnit}</span>
             <p>
@@ -42,7 +42,7 @@ const HTMLRenderer = {
                 <div class="extended-forecast-day col col-third">
                     <a class="extended-forecast-day__link" data-index="${index}">
                         <h4>${date}</h4>
-                        <img src="icons/${day.weather.icon}.png" alt="">
+                        <img src="icons/${day.weather.icon}.png" alt="${day.weather.description} icon">
                      <p>${day.weather.description}</p>
                         <span class="day-forecast__temp">${Math.round(day.temp)}</span><span class="day-forecast__unit">°${HTMLRenderer.displayUnit}</span>
                     </a>    
@@ -54,7 +54,7 @@ const HTMLRenderer = {
                 <div class="extended-forecast-day col col-third">
                     <a class="extended-forecast-day__link" data-index="${index}">
                         <h4>${date}</h4>
-                        <img src="icons/${day.weather.icon}.png" alt="">
+                        <img src="icons/${day.weather.icon}.png" alt="${day.weather.description} icon">
                      <p>${day.weather.description}</p>
                         <span class="day-forecast__temp">${Math.round(day.temp)}</span><span class="day-forecast__unit">°${HTMLRenderer.displayUnit}</span>
                     </a>    
@@ -82,7 +82,7 @@ const HTMLRenderer = {
         <div class="recommendation">
             <p>How about <a href="https://www.amazon.com/s/ref=nb_sb_noss_2?url=search-alias%3Dtoys-and-games&field-keywords=${game.Name}" target="_blank">${game.Name}?</a></p>
             <iframe src="${game.yUrl}"
-            width="560" height="315" frameborder="0"></iframe>
+            width="560" height="315" frameborder="0" alt="${game.Name}"></iframe>
             <p class="recommendation__description">${game.wTeaser}</p>
             <p><a class="recommendation__link">Get another recommendation</a></p>
         </div>
