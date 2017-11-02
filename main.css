@@ -187,4 +187,8 @@ iframe {
     .intro__query {
         margin-bottom: 20px;
     }
+
+    .hidden {
+        display: none;
+    }
 }
