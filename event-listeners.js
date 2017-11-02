@@ -3,6 +3,8 @@ const EventListeners = {
     searchQuery: "",
 
     startListeners: function() {
+        $(".day-forecast").off("click");
+        
         if (!this.listenersStarted) {
             this.handleSubmit();
             this.handleHeaderLinkClicked();
