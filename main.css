@@ -15,7 +15,7 @@ a {
 }
 
 a:hover {
-    color: #654E6D;
+    color: #978A9B;
 }
 
 header a {
@@ -133,6 +133,11 @@ p {
 
 iframe {
     border: 3px solid black;
+    transition: all 0.3s ease;
+}
+
+iframe:hover {
+    transform: scale(0.9);
 }
 
 .extended-forecast-day p, .extended-forecast-day h4 {
