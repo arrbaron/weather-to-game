@@ -15,6 +15,9 @@ const HTMLRenderer = {
         let day = data.data[App.dayIndex];
         let date = new Date(day.datetime).toDateString();
         let dayOfWeek = date.slice(0, 3);
+        let secondaryLocation = "";
+        App.inAmerica ? secondaryLocation = data.state_code : secondaryLocation = data.country_code;
+        console.log(data);
 
         $(".day-forecast__results--recommendation").remove();
         $(".day-forecast__results--weather").remove();
@@ -22,10 +25,10 @@ const HTMLRenderer = {
         $(".day-forecast__results").prepend(`
         <div class="day-forecast__results--recommendation col col-half">
             <h2 class="is-weather-good">${isWeatherGood}</h2> 
-            <div class="weather-evaluation">${dayOfWeek} ${weatherEvaluation} outside in ${data.city_name}, ${data.country_code}.</div>
+            <div class="weather-evaluation">${dayOfWeek} ${weatherEvaluation} outside in ${data.city_name}, ${secondaryLocation}.</div>
         </div>
         <div class="day-forecast__results--weather col col-half">
-            <h3>${date} weather for ${data.city_name}, ${data.country_code}</h3>
+            <h3>${date} weather for ${data.city_name}, ${secondaryLocation}</h3>
             <img src="icons/${day.weather.icon}.png" alt="${day.weather.description} icon">
             <p class="day-forecast__description">${day.weather.description} | 
                 <span class="day-forecast__temp">${Math.round(day.temp)}</span><span class="day-forecast__unit">°${HTMLRenderer.displayUnit}</span>
