@@ -11,6 +11,7 @@ const App = {
     baseGame: "cosmic encounter",
     maxTemp: 82,
     minTemp: 60,
+    inAmerica: false,
     
     reset: function() {
         EventListeners.startListeners();
@@ -27,20 +28,29 @@ const App = {
             units: App.units,
             days: 6,
         };
-        isNaN(searchTerm) ? query.city = searchTerm : query.postal_code = searchTerm;
+
+        if (isNaN(searchTerm)) {
+            query.city = searchTerm;
+        }
+        else {
+            query.postal_code = searchTerm;
+            query.country = "US";
+        }
 
         $.getJSON(WEATHERBIT_URL, query, callback).fail(HTMLRenderer.showErr);
         // look into using $.ajax
     },
 
     evaluateWeather: function(data) {
+        
         if (!data) {
             App.reset();
             HTMLRenderer.showErr();
         }
-        
+
+        data.country_code === "US" ? App.inAmerica = true : App.inAmerica = false;
+  
         this.data = data;
-        // let result = data.data[0];
         let result = data.data[App.dayIndex];
         let maxCloud = 25;
         let weatherEvaluation = " because it's ";
