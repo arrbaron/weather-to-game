@@ -44,23 +44,23 @@ const App = {
         let result = data.data[App.dayIndex];
         let maxCloud = 25;
         let weatherEvaluation = " because it's ";
-        let isWeatherGoodForGaming = "NO";
+        let isWeatherGoodForGaming = "NOPE :(";
 
         if (result.temp > App.maxTemp) {
             weatherEvaluation += "too hot ";
-            isWeatherGoodForGaming = "YES ";
+            isWeatherGoodForGaming = "YUP :)";
         } if (result.temp < App.minTemp) {
             weatherEvaluation += "too cold ";
-            isWeatherGoodForGaming = "YES ";
+            isWeatherGoodForGaming = "YUP :)";
         } if (result.precip !== 0 && result.precip !== null) {
             weatherEvaluation += "too rainy ";
-            isWeatherGoodForGaming = "YES ";
+            isWeatherGoodForGaming = "YUP :)";
         } if (result.clouds > maxCloud) {
             weatherEvaluation += "too cloudy";
-            isWeatherGoodForGaming = "YES ";
+            isWeatherGoodForGaming = "YUP :)";
         }
 
-        isWeatherGoodForGaming === "YES " ? weatherEvaluation = "It is a good day to game".concat(weatherEvaluation) 
+        isWeatherGoodForGaming === "YUP :)" ? weatherEvaluation = "It is a good day to game".concat(weatherEvaluation) 
         : weatherEvaluation = "It is NOT a good day to game because the weather is too nice";
         HTMLRenderer.showSection(".day-forecast");
         HTMLRenderer.showDayForecast(data, isWeatherGoodForGaming, weatherEvaluation);

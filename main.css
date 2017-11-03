@@ -5,7 +5,7 @@
 html {
     background-color: #978A9B;
     color: #132024;
-    font-family: "Work Sans", sans-serif;
+    font-family: "Quicksand", sans-serif;
 }
 
 a {
@@ -36,6 +36,10 @@ header {
     margin-bottom: 10px;
     font-family: "Acme", sans-serif;
     color: white;
+}
+
+.title, .logo {
+    justify-self: center;
 }
 
 main {
@@ -85,6 +89,10 @@ h1, h2 {
     margin-bottom: 5px;
 }
 
+h1 {
+    font-size: 3em;
+}
+
 h3 {
     margin-bottom: 0px;
 }
@@ -97,8 +105,8 @@ ul {
 }
 
 .logo {
-    width: 75px;
-    height: 75px;
+    width: 100px;
+    height: 100px;
 }
 
 .is-weather-good {
@@ -115,14 +123,23 @@ ul {
 }
 
 .extended-forecast-day {
-    border: 3px solid black;
+    border: 1px solid black;
     border-radius: 4px;
     transition: all 0.3s ease;
     margin-bottom: 5px;
+    margin-right: 3px;
+}
+
+.extended-forecast-day a {
+    text-decoration: none;
+}
+
+.extended-forecast-day a:hover {
+    color: #132024;
 }
 
 .extended-forecast-day:hover {
-    background-color: #C0B9C2;
+    background-color: rgb(209, 202, 211);
     transform: scale(0.9);
 }
 
@@ -132,12 +149,8 @@ p {
 }
 
 iframe {
-    border: 3px solid black;
+    border: 1px solid black;
     transition: all 0.3s ease;
-}
-
-iframe:hover {
-    transform: scale(0.9);
 }
 
 .extended-forecast-day p, .extended-forecast-day h4 {
@@ -152,6 +165,7 @@ iframe:hover {
 .day-forecast__units {
     margin-top: 0;
     margin-bottom: 10px;
+
 }
 
 .day-forecast__search {
