@@ -1,5 +1,5 @@
 const WEATHERBIT_URL = "https://api.weatherbit.io/v2.0/forecast/daily";
-const TASTEDIVE_URL = "https://tastedive.com/api/similar";
+const TASTEDIVE_URL = "https://cors-anywhere.herokuapp.com/https://tastedive.com/api/similar";
 
 // shut up
 // tastedive key = 289089-Weathert-XWI5W03O
@@ -23,10 +23,12 @@ const App = {
     },
 
     getWeatherDataFromAPI: (searchTerm, callback) => {
+        console.log(searchTerm);
+
         const query = {
             key: "62362ac75c5948fc9871e28bb51d0d19",
             units: App.units,
-            days: 6,
+            days: 6
         };
 
         if (isNaN(searchTerm)) {
@@ -37,12 +39,31 @@ const App = {
             query.country = "US";
         }
 
-        $.getJSON(WEATHERBIT_URL, query, callback).fail(HTMLRenderer.showErr);
+        // $.getJSON(WEATHERBIT_URL, query, callback).fail(HTMLRenderer.showErr);
         // look into using $.ajax
+
+        $.ajax({
+            method: "GET",
+            url: WEATHERBIT_URL,
+            dataType: "jsonp",
+            data: {
+                key: "62362ac75c5948fc9871e28bb51d0d19",
+                units: App.units,
+                days: 6,
+                city: searchTerm
+            }
+        })
+        .done(function(result) {
+            App.evaluateWeather(result);
+        })
+        .fail(function(result) {
+            console.log("FAILED");
+        });
     },
 
     evaluateWeather: function(data) {
-        
+        console.log(data);
+
         if (!data) {
             App.reset();
             HTMLRenderer.showErr();
@@ -90,7 +111,28 @@ const App = {
             // callback: HTMLRenderer.showGame
         };
 
-        $.getJSON(TASTEDIVE_URL, query, callback).fail(HTMLRenderer.showErr);
+        $.ajax({
+            method: "GET",
+            url: TASTEDIVE_URL,
+            data: {
+                q: searchTerm,
+                type: "games",
+                info: 1,
+                limit: 21,
+                k: "289089-Weathert-XWI5W03O"
+            },
+            headers: {
+                "x-requested-with": "xhr"
+            }
+        })
+            .done(function (result) {
+                HTMLRenderer.showGame(result);
+            })
+            .fail(function (result) {
+                console.log("FAILED");
+            });
+
+        // $.getJSON(TASTEDIVE_URL, query, callback).fail(HTMLRenderer.showErr);
     },
 
     changeUnits: function(units) {
