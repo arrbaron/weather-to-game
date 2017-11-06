@@ -33,7 +33,6 @@ const EventListeners = {
             EventListeners.handleFahrenheitClicked();
             EventListeners.handleSearchClicked();
             queryTarget.val("");
-            HTMLRenderer.showSection(".extended-forecast");
         });
     },
 
