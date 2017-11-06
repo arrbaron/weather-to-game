@@ -39,25 +39,17 @@ const App = {
             query.country = "US";
         }
 
-        // $.getJSON(WEATHERBIT_URL, query, callback).fail(HTMLRenderer.showErr);
-        // look into using $.ajax
-
         $.ajax({
             method: "GET",
             url: WEATHERBIT_URL,
             dataType: "jsonp",
-            data: {
-                key: "62362ac75c5948fc9871e28bb51d0d19",
-                units: App.units,
-                days: 6,
-                city: searchTerm
-            }
+            data: query
         })
         .done(function(result) {
             App.evaluateWeather(result);
         })
-        .fail(function(result) {
-            console.log("FAILED");
+        .fail(function() {
+            HTMLRenderer.showErr();
         });
     },
 
@@ -114,13 +106,7 @@ const App = {
         $.ajax({
             method: "GET",
             url: TASTEDIVE_URL,
-            data: {
-                q: searchTerm,
-                type: "games",
-                info: 1,
-                limit: 21,
-                k: "289089-Weathert-XWI5W03O"
-            },
+            data: query,
             headers: {
                 "x-requested-with": "xhr"
             }
@@ -132,7 +118,6 @@ const App = {
                 console.log("FAILED");
             });
 
-        // $.getJSON(TASTEDIVE_URL, query, callback).fail(HTMLRenderer.showErr);
     },
 
     changeUnits: function(units) {
