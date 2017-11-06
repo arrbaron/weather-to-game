@@ -1,14 +1,13 @@
 const WEATHERBIT_URL = "https://api.weatherbit.io/v2.0/forecast/daily";
 const TASTEDIVE_URL = "https://cors-anywhere.herokuapp.com/https://tastedive.com/api/similar";
 
-// shut up
 // tastedive key = 289089-Weathert-XWI5W03O
 
 const App = {
     data: [],
     units: "I",
     dayIndex: 0,
-    baseGame: "cosmic encounter",
+    baseGame: "the settlers of catan",
     maxTemp: 82,
     minTemp: 60,
     inAmerica: false,
@@ -47,6 +46,7 @@ const App = {
         })
         .done(function(result) {
             App.evaluateWeather(result);
+            console.log("DONE");
         })
         .fail(function() {
             HTMLRenderer.showErr();
@@ -65,7 +65,7 @@ const App = {
   
         this.data = data;
         let result = data.data[App.dayIndex];
-        let maxCloud = 25;
+        let maxCloud = 50;
         let weatherEvaluation = " because it's ";
         let isWeatherGoodForGaming = "NOPE :(";
 
@@ -93,6 +93,7 @@ const App = {
 
     getGameDataFromAPI: function(searchTerm, callback) {
         console.log("getgamedatafromAPI");
+        HTMLRenderer.showLoading();
         
         const query = {
             q: searchTerm,
@@ -100,7 +101,6 @@ const App = {
             info: 1,
             limit: 21,
             k: "289089-Weathert-XWI5W03O",
-            // callback: HTMLRenderer.showGame
         };
 
         $.ajax({

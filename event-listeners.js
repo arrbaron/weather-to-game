@@ -47,6 +47,7 @@ const EventListeners = {
 
     handleRecommendationLinkClicked: function() {
         $(".day-forecast").on("click", ".recommendation__link", function() {
+            HTMLRenderer.hideRecommendation();
             App.getGameDataFromAPI(App.baseGame, HTMLRenderer.showGame);
         });
     },
