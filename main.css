@@ -150,7 +150,6 @@ p {
 
 iframe {
     border: 1px solid black;
-    transition: all 0.3s ease;
 }
 
 .extended-forecast-day p, .extended-forecast-day h4 {
@@ -176,6 +175,19 @@ iframe {
 .intro__error {
     color: red;
     font-weight: bold;
+}
+
+.loadImg {
+    position: absolute;
+    z-index: 999;
+    background-color: transparent;
+    top: 400px;
+}
+
+.loadImg div {
+    display :table-cell;
+    width :200px;
+    height :200px;
 }
 
 @media only screen and (max-width:640px) {
@@ -209,5 +221,16 @@ iframe {
 
     .hidden {
         display: none;
+    }
+
+    .loadImg {
+        position: static;
+        width: 100%;
+    }
+
+    .loadImg div {
+        margin-left: auto;
+        margin-right: auto;
+        display:  block;
     }
 }

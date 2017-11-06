@@ -17,13 +17,13 @@ const HTMLRenderer = {
         let dayOfWeek = date.slice(0, 3);
         let secondaryLocation = "";
         App.inAmerica ? secondaryLocation = data.state_code : secondaryLocation = data.country_code;
-        console.log(data);
 
+        HTMLRenderer.test();
         $(".day-forecast__results--recommendation").remove();
         $(".day-forecast__results--weather").remove();
         $(".extended-forecast-day").remove();
         $(".day-forecast__results").prepend(`
-        <div class="day-forecast__results--recommendation col col-half">
+        <div class="day-forecast__results--recommendation row row--centered col col-half">
             <h2 class="is-weather-good">${isWeatherGood}</h2> 
             <div class="weather-evaluation">${dayOfWeek} ${weatherEvaluation} outside in ${data.city_name}, ${secondaryLocation}.</div>
         </div>
@@ -81,17 +81,31 @@ const HTMLRenderer = {
 
         console.log("showing game recommendation");
 
-        $(".recommendation").remove();
-
         $(".day-forecast__results--recommendation").append(`
-        <div class="recommendation">
+        <div class="recommendation col col-full">
             <p>How about <a href="https://www.amazon.com/s/ref=nb_sb_noss_2?url=search-alias%3Dtoys-and-games&field-keywords=${game.Name}" target="_blank">${game.Name}?</a></p>
-            <iframe src="${game.yUrl}"
-            width="560" height="315" frameborder="0" alt="${game.Name}"></iframe>
+            <iframe src="${game.yUrl}" alt="${game.Name}" width="560" height="315"></iframe>
             <p class="recommendation__description">${game.wTeaser}</p>
             <p><a class="recommendation__link">Get another recommendation</a></p>
         </div>
         `);
+
+        $(".loadImg").remove();
+    },
+
+    showLoading: function() {
+        console.log("showing loading");
+        $(".is-weather-good").append(`
+        <div class="loadImg row row--centered col col-full">
+            <div>
+                <img src="images/loading.gif">
+            </div>
+        </div>
+        `);
+    },
+
+    hideRecommendation: function() {
+        $(".recommendation").remove();
     },
 
     showErr: function() {
@@ -121,6 +135,12 @@ const HTMLRenderer = {
 
             $(item).html(`${newTemp}`);
             $(item).siblings(".day-forecast__unit").html(`°${HTMLRenderer.displayUnit}`);
+        });
+    },
+
+    test: function() {
+        $(".day-forecast").on("load", "iframe", function() {
+            console.log("loaded");
         });
     }
 };
