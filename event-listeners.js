@@ -42,6 +42,7 @@ const EventListeners = {
             App.dayIndex = $(this).attr("data-index");
             App.searchWeather(query);
             console.log("getting new forecast");
+            window.scrollTo(0, 0);
         });
     },
 
